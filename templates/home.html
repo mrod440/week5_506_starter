@@ -7,36 +7,36 @@
     <div class="col-md-9">
 
         <div class="text-center my-4">
-            <h1 class="display-5 mb-3">Course 506 — Week 5 Skeleton</h1>
-            <p class="lead text-muted">
-                Flask + Postgres + SQLModel + Bootstrap, with your S3 site on board.
+            <h1 class="display-5 mb-3 text-danger">ShadowDark Generator</h1>
+            <p class="lead text-light">
+                Procedural dungeons for your TTRPG campaigns.
             </p>
         </div>
 
         <div class="row g-4">
             <div class="col-md-6">
-                <div class="card h-100">
+                <div class="card h-100 bg-black border-secondary text-light">
                     <div class="card-body">
-                        <h5 class="card-title">Your S3 site</h5>
-                        <p class="card-text">
+                        <h5 class="card-title text-warning">Your S3 site</h5>
+                        <p class="card-text text-secondary">
                             Whatever you've synced from your S3 bucket lives here.
                             Run <code>aws s3 sync</code> from the README, then click below.
                         </p>
-                        <a href="{{ url_for('site_home') }}" class="btn btn-primary">
+                        <a href="{{ url_for('site_home') }}" class="btn btn-danger">
                             View My Site
                         </a>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card h-100">
+                <div class="card h-100 bg-black border-secondary text-light">
                     <div class="card-body">
-                        <h5 class="card-title">About this skeleton</h5>
-                        <p class="card-text">
+                        <h5 class="card-title text-warning">About this skeleton</h5>
+                        <p class="card-text text-secondary">
                             Project overview, team members, planned endpoints, and schema.
                             Each team replaces the placeholder content with their own.
                         </p>
-                        <a href="{{ url_for('about') }}" class="btn btn-outline-primary">
+                        <a href="{{ url_for('about') }}" class="btn btn-outline-warning">
                             About page
                         </a>
                     </div>
@@ -45,15 +45,14 @@
         </div>
 
         {% if user %}
-        <div class="alert alert-success mt-4 mb-0">
-            You're logged in as <strong>{{ user.username }}</strong>. The auth flow uses
-            real Flask sessions backed by a Postgres <code>users</code> table.
+        <div class="alert bg-success text-white border-0 mt-4 mb-0">
+            You're logged in as <strong>{{ user.username }}</strong>. 
+            Ready to explore the depths!
         </div>
         {% else %}
-        <div class="alert alert-light border mt-4 mb-0 text-muted">
-            Not logged in. Use the navbar to <a href="{{ url_for('login') }}">log in</a>
-            or <a href="{{ url_for('register') }}">register</a> — the auth flow uses real
-            Flask sessions backed by a Postgres <code>users</code> table.
+        <div class="alert bg-black border border-secondary text-light mt-4 mb-0">
+            Not logged in. Use the navbar to <a href="{{ url_for('login') }}" class="text-danger">log in</a>
+            or <a href="{{ url_for('register') }}" class="text-warning">register</a> to start generating dungeons.
         </div>
         {% endif %}
 
