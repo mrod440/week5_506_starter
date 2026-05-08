@@ -3,22 +3,53 @@
 {% block content %}
 <div class="row">
     <div class="col-md-8 mx-auto">
-        <h1 class="h3 mb-4">About</h1>
-        <p>This is a placeholder About page. Replace its contents with your team's About content as part of the Week 5 assignment.</p>
+        <h1 class="h3 mb-4 text-warning">About the Project</h1>
+        <p class="text-light"><strong>SD Dungeon Generator</strong> is a web app for creating and exploring Shadowdark-inspired procedural dungeons. A user selects a dungeon level, generates a gridded dungeon map, begins in an entrance room under fog of war, and reveals rooms, doors, monsters, treasure, and traps as they explore.</p>
 
-        <h2 class="h5 mt-4">Required sections</h2>
-        <ul>
-            <li>Project name and one-or-two-sentence pitch</li>
-            <li>Team members and roles</li>
-            <li>Project type (which of the seven from Week 4 lecture, or a custom variant)</li>
-            <li>Endpoints planned (5–8 routes, one-line description each)</li>
-            <li>Web-based data source (API name, docs link, specific endpoint, free-tier notes)</li>
-            <li>Schema sketch (tables and columns)</li>
-            <li>Link to your team's S3 bucket</li>
-            <li>Link to your team's GitHub org</li>
+        <h2 class="h5 mt-4 text-warning">Contributors</h2>
+        <ul class="text-light">
+            <li><strong>Megan</strong> - Server-side</li>
+            <li><strong>Charles</strong> - Client-side</li>
+            <li><strong>Mario</strong> - Db-and-security</li>
         </ul>
 
-        <p class="text-muted small">All members of your team must have the same content here. See the assignment instructions in <code>README.md</code>.</p>
+        <h2 class="h5 mt-4 text-warning">Project type</h2>
+        <p class="text-light">Custom variant: procedural game/tool web app. The project combines game design, procedural generation, data modeling, frontend interaction, backend deployment, and security decisions in one Flask + Postgres walking skeleton.</p>
+
+        <h2 class="h5 mt-4 text-warning">Endpoints planned</h2>
+        <ul class="text-light">
+            <li><code>GET /</code></li>
+            <li><code>GET /site/</code></li>
+            <li><code>GET /site/&lt;path&gt;</code></li>
+            <li><code>GET /about</code></li>
+            <li><code>GET /register</code></li>
+            <li><code>POST /register</code></li>
+            <li><code>GET /login</code></li>
+            <li><code>POST /login</code></li>
+        </ul>
+
+        <h2 class="h5 mt-4 text-warning">Web-based data source</h2>
+        <p class="text-light"><strong>API/platform:</strong> AWS S3 static website hosting for the team's dungeon site, with AWS API Gateway and Lambda as the planned backend path for saved dungeon runs.<br>
+        <strong>Docs:</strong> Amazon S3 static website hosting and Amazon API Gateway.<br>
+        <strong>Specific endpoint:</strong> <code>/site/</code> for the working dungeon generator served inside the Flask walking skeleton.<br>
+        <strong>Free-tier notes:</strong> AWS offers limited free-tier S3 storage/requests and monthly request allowances for API Gateway and Lambda on eligible accounts.</p>
+
+        <h2 class="h5 mt-4 text-warning">Schema sketch</h2>
+        <ul class="text-light">
+            <li><code>Users (id, username, password_hash, created_at)</code></li>
+            <li><code>SavedRuns (id, user_id, seed, level, state_json, created_at, updated_at)</code></li>
+            <li><code>Tiles (id, saved_run_id, x, y, type, room_id, hall_id)</code></li>
+            <li><code>Rooms (id, saved_run_id, x, y, width, height, discovered, explored)</code></li>
+            <li><code>Halls (id, saved_run_id, from_room_id, to_room_id)</code></li>
+            <li><code>Entities (id, saved_run_id, kind, name, x, y, defeated, collected, revealed, triggered, value)</code></li>
+            <li><code>LootEntries (id, saved_run_id, name, value, origin_tile)</code></li>
+        </ul>
+
+        <h2 class="h5 mt-4 text-warning">Links</h2>
+        <ul class="text-light">
+            <li><strong>Team's S3 bucket:</strong> <a href="https://raw.githubusercontent.com/site/" class="text-danger">ShadowDarklings S3 static site</a></li>
+            <li><strong>Team's GitHub org:</strong> <a href="https://github.com/ShadowDarklings" class="text-danger">https://github.com/ShadowDarklings</a></li>
+        </ul>
     </div>
 </div>
 {% endblock %}
